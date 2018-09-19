@@ -1,0 +1,23 @@
+1. digraph G { 
+2. 	newrank = true;
+3. 	node[shape = box];
+4.	nodesep = 1.6;
+5.	ranksep = 1.5;
+6.	E [pos="", width="3.93", height="1.47"];
+7.	G [pos="", width="3.96", height="1.47"];
+8.	I [pos="", width="2.08", height="1.13"];
+9.	H [pos="", width="3.93", height="1.47"];
+10.	A [pos="", width="3.93", height="1.47"];
+11.	C [pos="", width="2.08", height="1.13"];
+12.	F [pos="", width="2.08", height="1.13"];
+13.	B [pos="", width="2.08", height="1.13"];
+14.	D [pos="", width="2.08", height="1.13"];
+15.	H -> E;
+16.	G -> H;
+17.	A -> B;
+18.	E -> B;
+19.	I;
+20.	C;
+21.	F;
+22.	D;
+23. }

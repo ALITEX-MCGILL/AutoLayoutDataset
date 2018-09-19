@@ -1,0 +1,51 @@
+
+ 1.   Operation mergeConcernLayout(LayoutModel m1, LayoutModel m2) {
+ 2.       LayoutModel newM2 = m2
+ 3.       LayoutModel copyM2 = m2.copy()
+ 4.       merged = true
+ 5.		  //Reverse iteration of concern layouts, i.e., original models of m1
+ 6.       For each newM1 in reverse : LayoutModel in ConcernModels {
+ 7.		  	If (newM1.mappedElement != empty) {
+ 8.				Update mappedElement
+ 9.			}
+ 10.		If (merged is true ) {
+ 11.			//call rpGraph
+ 12.			newM2 = rpGraph(newM1, newM2)
+ 13.		} Else {
+ 14.			//call rpGraph
+ 15.			newM2 = rpGraph(newM1, copyM2)
+ 16.        } 
+ 17.        DECLARE copy1 : LayoutModel, copy2 : LayoutModel
+ 18.	    If (newM2.mergeddElement = empty) {
+ 19.       		merged = false
+ 20.	        For each n : Node in newM2 {
+ 21.           	If (m1.contains(n)) {
+ 22.               	copy1.add(n);
+ 23.            } Else {
+ 24.                copy2.add(n);
+ 25.            }
+ 26.       		}
+ 27.	       	If (concernModels.previousLayoutModel != empty) {
+ 28.				concernModelsCopy.add(copy1);
+ 29.	       	} Else {
+ 30.           		concernModelsCopy.add(copy1);
+ 31.           		concernModelsCopy.add(copy2);
+ 32.       		}
+ 33.        } Else {
+ 34.       		merged = true
+ 35.            copyM2 = newM2.copy()
+ 36.        	If (concernModels.previousLayoutModel = empty) {
+ 37.           		concernModelsCopy.add(newM2);
+ 38.           }   
+ 39.        }
+ 40.	  }
+ 41.      If (concernModels == empty) {
+ 42.      	concernModels.add(m2);
+ 43.      } Else {
+ 44.        concernModels.clear();
+ 45.        for each m : LayoutModel in concernModelsCopy {
+ 46.               concernModels.add(m);
+ 47.           }
+ 48.           concernModelsCopy.clear();
+ 49.       }
+ 50.   }

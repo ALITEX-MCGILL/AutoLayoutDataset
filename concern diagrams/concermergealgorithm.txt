@@ -1,0 +1,49 @@
+
+    Operation mergeConcernLayout(LayoutModel m1, LayoutModel m2) {
+        LayoutModel newM2 = m2
+        LayoutModel copyM2 = m2.copy()
+        DECLARE merged = BOLEAN
+        If (ConcernLayout has previous LayoutModel) {
+        	LayoutModel newM1 = ConcernLayout.getPreviousModel()
+            Update mapped elements
+        }
+        If (merged is true ) {
+        	//call rpGraph
+            newM2 = rpGraph(newM1, newM2)
+        } Else {
+            newM2 = rpGraph(newM1, copyM2)
+        } 
+        DECLARE copy1 : LayoutModel
+        DECLARE copy2 : LayoutModel
+        If (newM2  does not contain mapped element) {
+        	merged = false
+            For each n : Node in newM2 {
+            	If (m1 contains n) {
+                	copy1.add(n);
+                } Else {
+                    copy2.add(n);
+                }
+           }
+        	If (ConcernLayout has previous LayoutModel) {
+        		concernModelsCopy.add(copy1);
+        	} Else {
+            	concernModelsCopy.add(copy1);
+            	concernModelsCopy.add(copy2);
+        	}
+        } Else {
+        	merged = true
+            copyM2 = newM2.copy()
+            If (ConcernLayout does not have previous LayoutModel) {
+            	concernModelsCopy.add(newM2);
+            }   
+        }
+        If (concernModels is empty) {
+            concernModels.add(m2);
+        } else {
+            concernModels.clear();
+            for each m : LayoutModel in concernModelsCopy {
+                concernModels.add(m);
+            }
+            concernModelsCopy.clear();
+        }
+    }

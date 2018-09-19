@@ -1,0 +1,9 @@
+1. For each element : Element in Combined Model {
+2. 	print element.name [pos="" width=" element.width ", height=" element.height ']
+3. }
+4. For each association : Association in Combined Model {
+5.	print association.getSource().getName() -> association.getTarget().getName()
+6. }
+7. For each inheritance : Inheritance in Combined Model {
+8.	print inheritance.getSuperClass().getName() -> inheritance.getSubClass.getName()
+9. }
